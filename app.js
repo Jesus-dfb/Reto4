@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts'); // Importar el middleware de layouts
 var session = require('express-session'); // Importar el middleware de sesión
-const Database = require('./database/Database'); // Importar la configuración de la base de datos
+const Database = require('./database/database'); // Importar la configuración de la base de datos
 
 Database.getInstance('./database/database.db'); // Inicializar la base de datos
 
