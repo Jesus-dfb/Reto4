@@ -1,0 +1,125 @@
+@import "theme.css";
+
+:root{
+  --gl-primary:#2b6cb0;   /* azul */
+  --gl-primary-2:#1d4ed8;
+  --gl-dark:#111827;
+  --gl-bg:#f6f7fb;
+  --gl-card:#ffffff;
+}
+
+html, body{
+  margin:0;
+  padding:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--gl-bg);
+  color: #111827;
+}
+
+/* Espacio por navbar fixed */
+main{
+  padding-top: 84px;
+}
+
+/* Navbar (cambia respecto al ejemplo) */
+.navbar{
+  background: linear-gradient(90deg, var(--gl-dark), #0b1220);
+}
+
+.brand-mark{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+/* Hero simple */
+.hero{
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  background: #0b1220;
+}
+
+.hero::before{
+  content: "";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.20)),
+    url('/images/img1.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.05);
+}
+
+.hero > .hero-content{
+  position: relative;
+  padding: 3rem 1.25rem;
+}
+
+@media (min-width: 768px){
+  .hero > .hero-content{ padding: 4.5rem 3rem; }
+}
+
+/* Tarjetas de características */
+.feature-card{
+  background: var(--gl-card);
+  border: 1px solid rgba(17,24,39,.08);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.feature-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.10);
+}
+
+.feature-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(43,108,176,.12);
+  color: var(--gl-primary);
+}
+
+/* Cards de juegos (perfil) */
+.game-card{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,.10);
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+
+.game-card .card-img-top{
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.badge-soft{
+  background: rgba(43,108,176,.12);
+  color: var(--gl-primary-2);
+  border: 1px solid rgba(43,108,176,.25);
+}
+
+/* Formularios */
+.form-shell{
+  background: var(--gl-card);
+  border-radius: 16px;
+  border: 1px solid rgba(17,24,39,.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+.footer-simple{
+  background: #0b1220;
+  color: rgba(255,255,255,.75);
+}

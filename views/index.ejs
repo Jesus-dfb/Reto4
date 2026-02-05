@@ -1,0 +1,146 @@
+<!-- Home (más básica: hero fijo + secciones) -->
+<section class="pt-3 pt-md-4">
+  <div class="container">
+
+    <div class="hero text-white">
+      <div class="hero-content">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <h1 class="display-5 fw-bold mb-2">Tu colección, ordenada</h1>
+            <p class="lead text-white-50 mb-4">Guarda tus videojuegos, marca el estado y encuentra lo que buscas con filtros por plataforma y género.</p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <% if (!isLoggedIn) { %>
+                <a href="/registro" class="btn btn-primary btn-lg">
+                  Empezar
+                </a>
+                <button type="button" class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal">
+                  Ya tengo cuenta
+                </button>
+              <% } else { %>
+                <a href="/perfil" class="btn btn-primary btn-lg">Ir a mi colección</a>
+                <a href="/nuevo-juego" class="btn btn-outline-light btn-lg">Añadir juego</a>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="p-3 p-md-4 rounded-4 bg-dark bg-opacity-50 border border-white border-opacity-10">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div>
+                  <div class="fw-semibold">Rápido y simple</div>
+                  <div class="text-white-50 small">CRUD completo en pocos clics</div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div>
+                  <div class="fw-semibold">Filtros</div>
+                  <div class="text-white-50 small">Plataforma, género y estado</div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3">
+                <div>
+                  <div class="fw-semibold">Privado</div>
+                  <div class="text-white-50 small">Cada usuario ve su propia lista</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-5" id="caracteristicas">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Características</h2>
+      <p class="text-muted mb-0">Lo esencial para gestionar tu biblioteca personal.</p>
+    </div>
+
+    <div class="row g-3 g-md-4">
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <span class="feature-icon"><i class="bi bi-plus-circle"></i></span>
+            <div>
+              <h3 class="h5 mb-1">Añade juegos</h3>
+              <p class="text-muted mb-0">Título, plataforma, género, estado e imagen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <span class="feature-icon"><i class="bi bi-pencil-square"></i></span>
+            <div>
+              <h3 class="h5 mb-1">Edita y elimina</h3>
+              <p class="text-muted mb-0">Actualiza datos cuando quieras y borra con confirmación.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <span class="feature-icon"><i class="bi bi-filter"></i></span>
+            <div>
+              <h3 class="h5 mb-1">Filtra tu lista</h3>
+              <p class="text-muted mb-0">Encuentra rápido por plataforma, género o estado.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pb-5" id="como-empezar">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Cómo funciona</h2>
+      <p class="text-muted mb-0">Tres pasos y listo.</p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="badge bg-primary">Paso 1</span>
+            <i class="bi bi-person-plus fs-4 text-primary"></i>
+          </div>
+          <h3 class="h5">Crea tu cuenta</h3>
+          <p class="text-muted mb-0">Regístrate para guardar tu colección de forma privada.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="badge bg-primary">Paso 2</span>
+            <i class="bi bi-joystick fs-4 text-primary"></i>
+          </div>
+          <h3 class="h5">Añade tus juegos</h3>
+          <p class="text-muted mb-0">Completa el formulario con la información básica.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="badge bg-primary">Paso 3</span>
+            <i class="bi bi-funnel fs-4 text-primary"></i>
+          </div>
+          <h3 class="h5">Filtra y actualiza</h3>
+          <p class="text-muted mb-0">Cambia el estado, edita y ordena tu lista.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

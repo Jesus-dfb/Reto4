@@ -1,0 +1,90 @@
+<!-- Barra de navegación (versión más básica, pero distinta al ejemplo) -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top shadow-sm">
+  <div class="container">
+
+    <a href="/" class="navbar-brand fw-semibold d-flex align-items-center gap-2">
+      <span class="brand-mark">
+        <i class="bi bi-controller"></i>
+      </span>
+      <span>Game-Collector</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Abrir menú">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMain">
+
+      <% if (!isLoggedIn) { %>
+        <ul class="navbar-nav mx-auto gap-md-2 mt-3 mt-md-0">
+          <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#caracteristicas">Características</a></li>
+          <li class="nav-item"><a class="nav-link" href="#como-empezar">Cómo funciona</a></li>
+        </ul>
+      <% } else { %>
+        <ul class="navbar-nav mx-auto gap-md-2 mt-3 mt-md-0">
+          <li class="nav-item"><a class="nav-link" href="/perfil">Mi colección</a></li>
+          <li class="nav-item"><a class="nav-link" href="/nuevo-juego">Añadir juego</a></li>
+        </ul>
+      <% } %>
+
+      <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
+
+        <% if (!isLoggedIn) { %>
+          <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="bi bi-box-arrow-in-right me-1"></i> Entrar
+          </button>
+          <a href="/registro" class="btn btn-primary">
+            Crear cuenta
+          </a>
+        <% } else { %>
+          <a href="/perfil" class="btn btn-outline-light d-flex align-items-center gap-2">
+            <i class="bi bi-person-circle"></i>
+            <span class="d-none d-sm-inline"><%= user.nickname %></span>
+          </a>
+          <a href="/logout" class="btn btn-outline-danger">
+            Salir
+          </a>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Modal de login -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+    <div class="modal-content border-0 shadow-lg rounded-4">
+
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold">Acceso a Game-Collector</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body p-4">
+        <form action="/login" method="POST">
+
+          <div class="form-floating mb-3">
+            <input type="email" name="email" id="floatingInput" class="form-control rounded-3" placeholder="Correo electrónico">
+            <label for="floatingInput">Correo Electrónico</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="password" name="password" id="floatingPassword" class="form-control rounded-3" placeholder="Contraseña">
+            <label for="floatingPassword">Contraseña</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg w-100 px-3 rounded-3">Iniciar sesión</button>
+        </form>
+      </div>
+
+      <div class="modal-footer border-0 justify-content-center">
+        <p class="text-muted small mb-0">¿No tienes cuenta?
+          <a href="/registro" class="text-primary fw-bold text-decoration-none">Regístrate aquí</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
