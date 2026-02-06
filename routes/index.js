@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const Database = require('../database/Database');
+const Database = require('../database/database');
 const UsuarioDAO = require('../database/usuario-dao');
 const JuegosDAO = require('../database/juegos-dao');
 
