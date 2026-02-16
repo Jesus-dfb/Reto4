@@ -1,7 +1,3 @@
-/**
- * Archivo para inicializar la tabla videojuegos
- */
-
 module.exports = (db) => {
 
     const sql = `

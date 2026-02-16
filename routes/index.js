@@ -51,7 +51,8 @@ router.post('/login', function(req,res,next){
   if (usuario.password === password) {
 
     req.session.user = usuario;
-    res.redirect('/perfil');
+    // Redirigir a favoritos por defecto al iniciar sesión
+    res.redirect('/perfil?favoritos=true');
 
   } else res.render('index', { error: 'Contraseña incorrecta' })
   
@@ -69,11 +70,12 @@ router.get('/perfil', function(req, res, next) {
     return res.redirect('/');
   }
 
-  // Obtener filtros de la consulta, si existen
+  // Obtener filtros de la consulta
   const filtros = req.query
   const juegos = juegosDAO.filtrarJuegos(req.session.user.id, filtros);
 
-  res.render('perfil', { juegos, user: req.session.user, filtros });
+  // Los favoritos se manejan en el cliente con LocalStorage
+  res.render('perfil', { juegos, user: req.session.user, filtros: filtros });
 });
 
 /*GET nuevo juego page */
@@ -115,7 +117,7 @@ router.post('/eliminar/:id', function(req, res, next) {
   const juegoId = req.params.id;
   juegosDAO.eliminarJuegoPorId(juegoId);
 
-  res.redirect('back'); // Redirige a la página anterior asi conservo los filtros aplicados
+  res.redirect('back'); 
 });
 
 /* POST editar juego */
@@ -123,11 +125,41 @@ router.post('/editar/:id', function(req, res, next) {
   if (!req.session.user) {
     return res.redirect('/');
   }
-  const juegoId = req.params.id; //parametro pasado en la URL
+  const juegoId = req.params.id;
   const { titulo, plataforma, genero, estado, imagen, urlOrigen } = req.body;
   juegosDAO.editarJuego(juegoId, titulo, plataforma, genero, estado, imagen);
 
-  res.redirect(urlOrigen || '/perfil'); // si no hay url de origen, redirijo a perfil
+  res.redirect(urlOrigen || '/perfil'); 
+});
+
+/* API: POST nuevo juego (AJAX) */
+router.post('/api/nuevo-juego', function(req, res, next) {
+  if (!req.session.user) {
+    return res.status(401).json({ success: false, error: 'No autorizado' });
+  }
+  
+  const { titulo, plataforma, genero, estado, imagen } = req.body;
+  try {
+    const juegoId = juegosDAO.agregarJuego(titulo, plataforma, genero, estado, imagen, req.session.user.id);
+    res.json({ success: true, juegoId: juegoId });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+/* API: POST editar juego (AJAX) */
+router.post('/api/editar/:id', function(req, res, next) {
+  if (!req.session.user) {
+    return res.status(401).json({ success: false, error: 'No autorizado' });
+  }
+  const juegoId = req.params.id;
+  const { titulo, plataforma, genero, estado, imagen } = req.body;
+  try {
+    juegosDAO.editarJuego(juegoId, titulo, plataforma, genero, estado, imagen);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 

@@ -1,7 +1,3 @@
-/**
- * Clase DAO para manejar operaciones relacionadas con usuarios en la base de datos.
-*/
-
 class UsuarioDAO {
 
     #database = null

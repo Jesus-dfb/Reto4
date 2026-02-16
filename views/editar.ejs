@@ -9,7 +9,13 @@
               <h1 class="h3 fw-bold mb-1">Editar juego</h1>
               <p class="text-muted mb-0">Actualiza la información y guarda los cambios.</p>
             </div>
-            <a href="<%= urlOrigen || '/perfil' %>" class="btn btn-outline-secondary">Volver</a>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-outline-warning btn-favorito" data-juego-id="<%= juego.id %>" aria-label="Marcar como favorito">
+                <i class="bi bi-star"></i>
+                <span class="d-none d-sm-inline ms-1">Favorito</span>
+              </button>
+              <a href="<%= urlOrigen || '/perfil' %>" class="btn btn-outline-secondary">Volver</a>
+            </div>
           </div>
 
           <form action="/editar/<%= juego.id %>" method="POST">

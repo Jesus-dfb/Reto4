@@ -1,7 +1,3 @@
-/**
- * Acceso a datos para la entidad "juegos". 
-*/
-
 class JuegosDAO {
 
     #database = null
@@ -42,14 +38,16 @@ class JuegosDAO {
 
         const resultado = this.#database.prepare(sql).get(juegoId)
 
-        return resultado    
+        return resultado
     }
 
     agregarJuego(titulo, plataforma, genero, estado, imagen, usuarioId) {
 
         const sql = 'INSERT INTO videojuegos (titulo, plataforma, genero, estado, imagen, usuario_id) VALUES (?, ?, ?, ?, ?, ?)'
 
-        this.#database.prepare(sql).run(titulo, plataforma, genero, estado, imagen, usuarioId)
+        const resultado = this.#database.prepare(sql).run(titulo, plataforma, genero, estado, imagen, usuarioId)
+        
+        return resultado.lastInsertRowid
 
     }
 

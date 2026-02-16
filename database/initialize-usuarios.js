@@ -1,7 +1,3 @@
-/**
- * Archivo para inicializar la tabla usuarios 
-*/
-
 module.exports = (db) => {
 
     const sql = `
